@@ -1,3 +1,4 @@
+import InitialModal from "@/components/modals/initial-modal";
 import { initialProfile } from "@/lib/initial-profile";
 import prismadb from "@/lib/prismadb";
 import { redirect } from "next/navigation";
@@ -12,7 +13,7 @@ const SetupPage = async () => {
     return redirect(`servers/${server.id}`);
   }
 
-  return <div>Create a server</div>;
+  return <InitialModal />;
 };
 
 export default SetupPage;
