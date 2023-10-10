@@ -1,5 +1,5 @@
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
-import prismadb from "@/lib/prismadb";
+import { prismadb } from "@/lib/prismadb";
 
 export const initialProfile = async () => {
   const user = await currentUser();

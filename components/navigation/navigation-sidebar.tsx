@@ -1,5 +1,5 @@
 import { currentProfile } from "@/lib/current-profile";
-import prismadb from "@/lib/prismadb";
+import { prismadb } from "@/lib/prismadb";
 import { redirect } from "next/navigation";
 import { ModeToggle } from "../mode-toggle";
 import { ScrollArea } from "../ui/scroll-area";

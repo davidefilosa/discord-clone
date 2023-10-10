@@ -1,6 +1,6 @@
 import InitialModal from "@/components/modals/initial-modal";
 import { initialProfile } from "@/lib/initial-profile";
-import prismadb from "@/lib/prismadb";
+import { prismadb } from "@/lib/prismadb";
 import { redirect } from "next/navigation";
 
 const SetupPage = async () => {

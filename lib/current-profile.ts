@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs";
-import prismadb from "@/lib/prismadb";
+import { prismadb } from "@/lib/prismadb";
 
 export const currentProfile = async () => {
   const { userId } = auth();

@@ -58,7 +58,7 @@ const CreateServerModal = () => {
       await axios.post("/api/servers", values);
       form.reset();
       router.refresh();
-      window.location.reload();
+      onClose();
     } catch (error) {
       console.log(error);
     }
@@ -68,8 +68,13 @@ const CreateServerModal = () => {
     return null;
   }
 
+  const handleClose = () => {
+    form.reset();
+    onClose();
+  };
+
   return (
-    <Dialog open={isModalOpen} onOpenChange={onClose}>
+    <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">

@@ -1,6 +1,6 @@
 import { NextResponse } from "@/node_modules/next/server";
 import { currentProfile } from "@/lib/current-profile";
-import prismadb from "@/lib/prismadb";
+import { prismadb } from "@/lib/prismadb";
 import { v4 as uuidv4 } from "uuid";
 import { MemberRole } from "@prisma/client";
 
