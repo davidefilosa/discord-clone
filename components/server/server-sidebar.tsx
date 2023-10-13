@@ -10,6 +10,7 @@ import { Hash, Mic, Video, ShieldCheck, ShieldAlert } from "lucide-react";
 import { Separator } from "../ui/separator";
 import ServerSection from "./server-section";
 import ServerChannel from "./server-channel";
+import { ServerMember } from "./server-member";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -175,6 +176,21 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                   role={role}
                   server={server}
                 />
+              ))}
+            </div>
+          </div>
+        )}
+        {!!members?.length && (
+          <div className="mb-2">
+            <ServerSection
+              sectionType="members"
+              role={role}
+              label="Members"
+              server={server}
+            />
+            <div className="space-y-[2px]">
+              {members.map((member) => (
+                <ServerMember key={member.id} member={member} server={server} />
               ))}
             </div>
           </div>
