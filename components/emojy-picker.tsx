@@ -1,6 +1,9 @@
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Smile } from "lucide-react";
-import Picker from "@emoji-mart/react";
+import dynamic from "next/dynamic";
+
+const Picker = dynamic(() => import("@emoji-mart/react"), { ssr: false });
+
 import data from "@emoji-mart/data";
 import { useTheme } from "next-themes";
 
