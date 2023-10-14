@@ -16,6 +16,14 @@ export async function DELETE(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
+    if (!serverId) {
+      return new NextResponse("Server ID missing", { status: 400 });
+    }
+
+    if (!params.channelId) {
+      return new NextResponse("Channel ID missing", { status: 400 });
+    }
+
     const server = await prismadb.server.update({
       where: { id: serverId, profileId: profile.id },
       data: {
@@ -47,6 +55,14 @@ export async function PATCH(
 
     if (!profile) {
       return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    if (!serverId) {
+      return new NextResponse("Server ID missing", { status: 400 });
+    }
+
+    if (!params.channelId) {
+      return new NextResponse("Channel ID missing", { status: 400 });
     }
 
     const server = await prismadb.server.update({
