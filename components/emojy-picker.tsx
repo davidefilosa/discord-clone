@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 
 const Picker = dynamic(() => import("@emoji-mart/react"), { ssr: false });
 
-import data from "@emoji-mart/data";
 import { useTheme } from "next-themes";
 
 interface EmojiPickerProps {
@@ -13,6 +12,13 @@ interface EmojiPickerProps {
 
 const EmojiPicker = ({ onChange }: EmojiPickerProps) => {
   const { resolvedTheme } = useTheme();
+  const data = async () => {
+    const response = await fetch(
+      "https://cdn.jsdelivr.net/npm/@emoji-mart/data/sets/14/native.json"
+    );
+
+    return response.json();
+  };
 
   return (
     <Popover>
