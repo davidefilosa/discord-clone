@@ -1,6 +1,6 @@
 import { NextApiRequest } from "next";
 
-import { NextApiResponseServerIo } from "@/types";
+import { NextApiResponseServerIo } from "@/type";
 import { currentProfilePages } from "@/lib/current-profile-pages";
 import { prismadb } from "@/lib/prismadb";
 
