@@ -83,7 +83,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               {
                 label: "Text Channel",
                 type: "channel",
-                data: textChannels.map((channel) => ({
+                data: textChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.name,
                   icon: iconMap[channel.type],
@@ -92,7 +92,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               {
                 label: "Voice Channel",
                 type: "channel",
-                data: audioChannels.map((channel) => ({
+                data: audioChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.name,
                   icon: iconMap[channel.type],
@@ -101,7 +101,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               {
                 label: "Video Channel",
                 type: "channel",
-                data: videoChannels.map((channel) => ({
+                data: videoChannels?.map((channel) => ({
                   id: channel.id,
                   name: channel.name,
                   icon: iconMap[channel.type],
@@ -110,7 +110,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
               {
                 label: "members",
                 type: "member",
-                data: members.map((member) => ({
+                data: members?.map((member) => ({
                   id: member.id,
                   name: member.profile.name,
                   icon: roleIconMap[member.role],
