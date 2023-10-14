@@ -5,7 +5,7 @@ export const initialProfile = async () => {
   const user = await currentUser();
 
   if (!user) {
-    return redirectToSignIn;
+    return redirectToSignIn();
   }
 
   const profile = await prismadb.profile.findUnique({
@@ -16,7 +16,7 @@ export const initialProfile = async () => {
     return profile;
   }
 
-  const newprofile = await prisma.profile.create({
+  const newProfile = await prisma.profile.create({
     data: {
       userId: user.id,
       name: `${user.firstName} ${user.lastName}`,
@@ -25,5 +25,5 @@ export const initialProfile = async () => {
     },
   });
 
-  return newprofile;
+  return newProfile;
 };
