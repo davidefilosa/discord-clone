@@ -10,13 +10,14 @@ import { UserButton } from "@clerk/nextjs";
 
 const NavigationSidebar = async () => {
   const profile = await currentProfile();
+
+  if (!profile) {
+    return redirect("/");
+  }
+
   const servers = await prismadb.server.findMany({
     where: { members: { some: { profileId: profile.id } } },
   });
-
-  if (!currentProfile) {
-    return redirect("/");
-  }
 
   return (
     <div className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-[#1E1F22] bg-[#E3E5E8] py-3">
