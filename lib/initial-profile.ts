@@ -16,7 +16,7 @@ export const initialProfile = async () => {
     return profile;
   }
 
-  const newProfile = await prisma.profile.create({
+  const newProfile = await prismadb.profile.create({
     data: {
       userId: user.id,
       name: `${user.firstName} ${user.lastName}`,
