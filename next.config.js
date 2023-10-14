@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: false,
+
   webpack: (config) => {
     config.externals.push({
       "utf-8-validate": "commonjs utf-8-validate",
       bufferutil: "commonjs bufferutil",
-      swcMinify: false,
     });
 
     return config;
   },
+
   images: {
     remotePatterns: [
       {
