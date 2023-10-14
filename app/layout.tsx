@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import ModalProvider from "@/components/provider/modal-provider";
 import { SocketProvider } from "@/components/provider/socket-provider";
 import { QueryProvider } from "@/components/provider/query-provider";
+import Script from "next/script";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -21,22 +22,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem={false}
-            storageKey="discord-theme"
-          >
-            <SocketProvider>
-              <QueryProvider> {children}</QueryProvider>
-              <ModalProvider />
-            </SocketProvider>
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+
+      <Script strategy="lazyOnload">
+        {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                    page_path: window.location.pathname,
+                    });
+                `}
+      </Script>
+
+      <ClerkProvider>
+        <html lang="en" suppressHydrationWarning>
+          <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem={false}
+              storageKey="discord-theme"
+            >
+              <SocketProvider>
+                <QueryProvider> {children}</QueryProvider>
+                <ModalProvider />
+              </SocketProvider>
+            </ThemeProvider>
+          </body>
+        </html>
+      </ClerkProvider>
+    </>
   );
 }
