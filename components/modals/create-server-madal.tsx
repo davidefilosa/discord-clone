@@ -36,12 +36,7 @@ const formSchema = z.object({
 const CreateServerModal = () => {
   const { isOpen, onClose, type } = useModal();
   const isModalOpen = isOpen && type === "createServer";
-  const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -63,10 +58,6 @@ const CreateServerModal = () => {
       console.log(error);
     }
   };
-
-  if (!isMounted) {
-    return null;
-  }
 
   const handleClose = () => {
     form.reset();

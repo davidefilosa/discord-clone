@@ -90,6 +90,7 @@ const CreateChannelModal = () => {
   const handleClose = () => {
     form.reset();
     onClose();
+    router.refresh();
   };
 
   return (

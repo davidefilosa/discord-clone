@@ -57,17 +57,8 @@ const MembersModal = () => {
   const router = useRouter();
 
   const isModalOpen = isOpen && type === "members";
-  const [isMounted, setIsMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingId, setLoadingId] = useState("");
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   const onRoleChange = async (memberId: string, role: MemberRole) => {
     try {

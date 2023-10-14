@@ -25,18 +25,9 @@ const InviteModal = () => {
   const { server } = data;
 
   const isModalOpen = isOpen && type === "invite";
-  const [isMounted, setIsMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const origin = useOrigin();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   const inviteUrl = `${origin}/invite/${server?.inviteCode}`;
 
